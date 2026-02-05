@@ -14,11 +14,9 @@ services:
 
   # JSON Server API
   api:
-    image: node:20-alpine
-    working_dir: /app
-    volumes:
-      - ./db.json:/app/db.json
-    command: npx json-server --watch db.json --host 0.0.0.0 --port 3001
+    build:
+      context: .
+      dockerfile: Dockerfile.api
     ports:
       - "3001:3001"
     restart: unless-stopped
