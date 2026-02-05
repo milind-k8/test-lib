@@ -44,7 +44,21 @@ export const useUsers = (): UseUsersReturn => {
     }, []);
 
     const createUser = useCallback(async (user: UserInput) => {
-        setState(prev => ({ ...prev, saving: true, error: null }));
+        setState(prev => {
+            // Check phone number uniqueness against existing users
+            const phoneExists = prev.users.some(u => u.phoneNumber === user.phoneNumber);
+            if (phoneExists) {
+                return { ...prev, saving: false, error: 'Phone number already exists. Please use a different phone number.' };
+            }
+            return { ...prev, saving: true, error: null };
+        });
+
+        // Check again after setState (need to access current state)
+        const phoneExists = state.users.some(u => u.phoneNumber === user.phoneNumber);
+        if (phoneExists) {
+            throw new Error('Phone number already exists. Please use a different phone number.');
+        }
+
         try {
             const newUser = await userService.create(user);
             setState(prev => ({
@@ -60,9 +74,16 @@ export const useUsers = (): UseUsersReturn => {
             }));
             throw err;
         }
-    }, []);
+    }, [state.users]);
 
     const updateUser = useCallback(async (id: string, user: UserInput) => {
+        // Check phone number uniqueness (exclude current user)
+        const phoneExists = state.users.some(u => u.id !== id && u.phoneNumber === user.phoneNumber);
+        if (phoneExists) {
+            setState(prev => ({ ...prev, error: 'Phone number already exists. Please use a different phone number.' }));
+            throw new Error('Phone number already exists. Please use a different phone number.');
+        }
+
         setState(prev => ({ ...prev, saving: true, error: null }));
         try {
             const updatedUser = await userService.update(id, user);
@@ -79,7 +100,7 @@ export const useUsers = (): UseUsersReturn => {
             }));
             throw err;
         }
-    }, []);
+    }, [state.users]);
 
     const deleteUser = useCallback(async (id: string) => {
         setState(prev => ({ ...prev, saving: true, error: null }));
