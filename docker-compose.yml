@@ -1,0 +1,30 @@
+services:
+  # React Frontend (Nginx)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # JSON Server API
+  api:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./db.json:/app/db.json
+    command: npx json-server --watch db.json --host 0.0.0.0 --port 3001
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

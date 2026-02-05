@@ -1,0 +1,150 @@
+/* Confirm Dialog - Material U Theming */
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Material U Alert Dialog */
+.confirm-dialog {
+    background: var(--md-sys-color-surface-container-high);
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    box-shadow: var(--md-sys-elevation-3);
+    width: 100%;
+    max-width: 360px;
+    padding: 1.5rem;
+    text-align: center;
+    animation: popIn var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.confirm-dialog__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--md-sys-shape-corner-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.confirm-dialog__icon--danger {
+    background: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+}
+
+.confirm-dialog__icon--warning {
+    background: var(--md-sys-color-tertiary-container);
+    color: var(--md-sys-color-on-tertiary-container);
+}
+
+.confirm-dialog__icon--info {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.confirm-dialog__title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--md-sys-color-on-surface);
+    margin: 0 0 0.75rem;
+}
+
+.confirm-dialog__message {
+    font-size: 0.875rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+}
+
+.confirm-dialog__actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* Material U Buttons */
+.confirm-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: var(--md-sys-shape-corner-full);
+    border: none;
+    cursor: pointer;
+    transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    min-width: 80px;
+}
+
+.confirm-btn:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+}
+
+/* Text Button */
+.confirm-btn--secondary {
+    background: transparent;
+    color: var(--md-sys-color-primary);
+}
+
+.confirm-btn--secondary:hover:not(:disabled) {
+    background: var(--md-sys-color-primary-container);
+}
+
+/* Filled Button Variants */
+.confirm-btn--danger {
+    background: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+}
+
+.confirm-btn--danger:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+.confirm-btn--warning {
+    background: var(--md-sys-color-tertiary);
+    color: var(--md-sys-color-on-tertiary);
+}
+
+.confirm-btn--warning:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+.confirm-btn--info {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.confirm-btn--info:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: var(--md-sys-elevation-1);
+}

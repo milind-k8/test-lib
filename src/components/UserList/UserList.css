@@ -1,0 +1,211 @@
+/* User List - Material U Theming */
+.user-list {
+    width: 100%;
+}
+
+.user-list__table-container {
+    overflow-x: auto;
+    border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-surface-container-lowest);
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+.user-list__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+}
+
+.user-list__table th {
+    background: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.user-list__table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface);
+}
+
+.user-list__table tbody tr {
+    transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.user-list__table tbody tr:hover {
+    background: var(--md-sys-color-surface-container-high);
+}
+
+.user-list__table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.user-list__actions-header {
+    text-align: center;
+    width: 200px;
+}
+
+.user-list__actions {
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Icon Buttons - Material U Tonal Buttons */
+.user-list__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: none;
+    border-radius: var(--md-sys-shape-corner-full);
+    cursor: pointer;
+    transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    margin: 0 0.25rem;
+}
+
+.user-list__btn:hover {
+    transform: translateY(-1px);
+}
+
+.user-list__btn--edit {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+.user-list__btn--edit:hover {
+    box-shadow: var(--md-sys-elevation-1);
+    filter: brightness(0.95);
+}
+
+.user-list__btn--delete {
+    background: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+}
+
+.user-list__btn--delete:hover {
+    box-shadow: var(--md-sys-elevation-1);
+    filter: brightness(0.95);
+}
+
+/* Loading state */
+.user-list__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: var(--md-sys-color-surface-container-lowest);
+    border-radius: var(--md-sys-shape-corner-large);
+    box-shadow: var(--md-sys-elevation-1);
+}
+
+.user-list__spinner-icon {
+    color: var(--md-sys-color-primary);
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.user-list__loading p {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+/* Empty state */
+.user-list__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: var(--md-sys-color-surface-container-lowest);
+    border-radius: var(--md-sys-shape-corner-large);
+    box-shadow: var(--md-sys-elevation-1);
+    text-align: center;
+}
+
+.user-list__empty-icon {
+    color: var(--md-sys-color-primary);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+}
+
+.user-list__empty h3 {
+    color: var(--md-sys-color-on-surface);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
+.user-list__empty p {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-list__table-container {
+        border-radius: var(--md-sys-shape-corner-medium);
+    }
+
+    .user-list__table thead {
+        display: none;
+    }
+
+    .user-list__table,
+    .user-list__table tbody,
+    .user-list__table tr,
+    .user-list__table td {
+        display: block;
+    }
+
+    .user-list__table tr {
+        padding: 1rem;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    }
+
+    .user-list__table td {
+        padding: 0.5rem 0;
+        border-bottom: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user-list__table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .user-list__actions {
+        justify-content: flex-end;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        margin-top: 0.5rem;
+        border-top: 1px dashed var(--md-sys-color-outline-variant);
+    }
+
+    .user-list__actions::before {
+        display: none;
+    }
+}

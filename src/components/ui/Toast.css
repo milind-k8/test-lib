@@ -1,0 +1,89 @@
+/* Toast - Material U Snackbar Theming */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: var(--md-sys-shape-corner-small);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    box-shadow: var(--md-sys-elevation-3);
+    z-index: 1100;
+    animation: toastSlideIn var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+    max-width: calc(100vw - 4rem);
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(1rem) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Material U uses inverse surface for snackbars */
+.toast--success {
+    background: #1E4620;
+    color: #B9F6CA;
+}
+
+.toast--error {
+    background: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+}
+
+.toast--info {
+    background: #323232;
+    color: #FFFFFF;
+}
+
+.toast__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.toast__message {
+    flex: 1;
+}
+
+.toast__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    border-radius: var(--md-sys-shape-corner-full);
+    color: inherit;
+    cursor: pointer;
+    transition: background var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+.toast__close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}
